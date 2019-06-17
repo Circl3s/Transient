@@ -13,7 +13,7 @@ module DB
         puts "Looking for #{pass}:#{file}"
         local = REDIS.get(pass)
         if local == file
-            REDIS.del(pass)
+            REDIS.del(pass) #TODO: It doesn't delete the key
             return "./files/#{pass}/#{local}"
         else
             return "0"

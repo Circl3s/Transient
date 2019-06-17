@@ -8,7 +8,7 @@ require "./db"
 module Transient
 
     get "/" do |env|
-%{Theta Transient!
+%{Transient!
 
 Yet another ephemeral file hosting service made mainly to try out my knowledge of HTTP and databases in practice.
 
@@ -23,7 +23,7 @@ Made with <3 by Circl3s.
 }
     end
 
-    post "/" do |env|
+    post "/" do |env|   #TODO: Give a response.
         HTTP::FormData.parse(env.request) do |upload|
             filename = upload.filename
             if !filename.is_a?(String)
