@@ -1,0 +1,14 @@
+name: Transient
+version: 0.1.0
+authors:
+  - Feliks Maak (maak4422@gmail.com)
+
+description: |
+  Really ephemeral file hosting.
+
+dependencies:
+  redis:
+    github: stefanwille/crystal-redis
+    version: ~> 2.2.0
+  kemal:
+    github: kemalcr/kemal

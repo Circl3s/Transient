@@ -1,0 +1,6 @@
+/files
+/lib
+
+dump.rdb
+shard.lock
+testfile.txt
