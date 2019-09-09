@@ -1,11 +1,16 @@
 require "http"
 require "file_utils"
+require "logger"
 require "kemal"
 require "redis"
 require "./blahgen"
 require "./db"
 
 module Transient
+
+    LOG = Logger.new(STDOUT)
+
+    LOG.info("Starting setup...")
 
     get "/" do |env|
 %{Transient!
@@ -27,7 +32,7 @@ Made with <3 by Circl3s.
         HTTP::FormData.parse(env.request) do |upload|
             filename = upload.filename
             if !filename.is_a?(String)
-                puts "It seems someone's trying to upload a file with no name? Interesting..."
+                LOG.warn("It seems someone's trying to upload a file with no name? Interesting...")
             else
                 blah = Blah.gen(5)
                 FileUtils.mkdir("./files/#{blah}")
@@ -57,5 +62,6 @@ Made with <3 by Circl3s.
         end
     end
 
+    LOG.info("Starting server!")
     Kemal.run
 end
