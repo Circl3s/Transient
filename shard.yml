@@ -12,3 +12,5 @@ dependencies:
     version: ~> 2.2.0
   kemal:
     github: kemalcr/kemal
+  slang:
+    github: jeromegn/slang

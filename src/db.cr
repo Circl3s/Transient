@@ -15,10 +15,20 @@ module DB
         local = REDIS.get(pass)
         if local == file
             REDIS.del(pass)
-            return "./files/#{pass}/#{local}"
+            return "./files/#{pass}/secret"
         else
             return "0"
         end
     end
+
+    def check(pass)
+        ttl = REDIS.ttl(pass)
+        if ttl <= 0
+            return true
+        else
+            return false
+        end
+    end
+
     Transient::LOG.info("Connected successfully!")
 end
