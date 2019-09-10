@@ -67,6 +67,7 @@ Made with <3 by Circl3s.
                 FileUtils.rmdir("./files/#{pass}")
             end
         rescue err
+            env.response.status = HTTP::Status::NOT_FOUND
             "No such file or the passcode and name don't match."
         end
     end
